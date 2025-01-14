@@ -37,3 +37,18 @@ def test_note_to_string():
 
 
 def test_note_from_dict():
+    
+    note_data = {
+        "title": "Title",
+        "content": "Content",
+        "category": "Финансы",
+        "created_at": datetime.datetime.now().isoformat(),
+        "modified_at": datetime.datetime.now().isoformat()
+    }
+    note = Note.from_dict(note_data)
+
+    assert note.title == "Title"
+    assert note.content == "Content"
+    assert note.category == "Финансы"
+    assert note.created_at.isoformat() == note_data["created_at"]
+    assert note.modified_at.isoformat() == note_data["modified_at"]
